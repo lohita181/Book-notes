@@ -10,30 +10,46 @@
     <h1 class="wel">WELCOME TO YOUR BOOK-NOTES</h1>
     <div class="ddContainers">
       <div class="btnContainer">
-          <label for="Genre" class="l">Choose a genre:</label>
-          <select name="genre" id="genre">
-            <option value="all">Select All</option>
-              <option value="action">Action</option>
-              <option value="Comedy">Comedy</option>
-              <option value="Drama">Drama</option>
-              <option value="Sci-fi">Sci-fi</option>
-              <option value="Horror">Horror</option>
-          </select>
+          <form action="/genre" method="post">
+            <label for="Genre" class="l">Choose a genre:</label>
+            <select name="genre" id="genre">
+              <option value="all">Select All</option>
+                <option value="action">Action</option>
+                <option value="Comedy">Comedy</option>
+                <option value="Drama">Drama</option>
+                <option value="Sci-fi">Sci-fi</option>
+                <option value="Horror">Horror</option>
+            </select>
+          </form>
       </div>
-      
-      <div class="ratingContainer">
-        <div>Rating:</div>
-          <div class="arrow active">↑</div>
-          <div class="arrow">↓</div>
-      </div>
-      <div class="date">
-        <div>Date of Completion:</div>
-        <input type="month" class="calendar">
-      </div>
+      <form action="/rating" method="post">
+        <div class="ratingContainer">
+          <div>Rating:</div>
+            <div class="arrow active" name="arrow" value="up">↑</div>
+            <div class="arrow" name="arrow" value="down">↓</div>
+        </div>
+      </form>
+      <form action="/date" method="post">
+        <div class="date">
+          <div>Date of Completion:</div>
+          <input type="month" class="calendar" name="date">
+        </div>
+      </form>
     </div>
-    <div class="bookContainers">
-      <img src="" alt="">
-      <div class="notes"></div>
+    <div class="scroll-container">
+      <%books.forEach(book => { %>     
+      <div class="item">
+        <img src="<%= image %>" alt="image">
+        <div class="content">
+          <div class="title"><span>Title: </span><%=book.title%></div>
+          <div class="author"><span>Author: </span> <%= book.author %></div>       
+          <div class="ab">About this book...</div>
+          <div class="desc">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quibusdam tempora fuga rem ex reiciendis iusto officia nostrum. Debitis, tempora suscipit atque assumenda maxime quia deleniti accusamus fugit aperiam, amet deserunt officiis qui at similique optio. Animi facere eligendi debitis, praesentium quam placeat. Praesentium inventore fugiat, eligendi voluptatibus obcaecati quaerat, recusandae voluptate minus alias deserunt, ad sapiente repellat ipsum sunt omnis tempore voluptates molestiae quos dolorem soluta non tempora mollitia similique? Voluptatem rerum tempora dolorem iure repellat, earum, nulla incidunt corrupti magni veritatis animi illum natus assumenda eos. Culpa illum voluptas, dignissimos iusto cupiditate necessitatibus reprehenderit blanditiis corrupti deleniti, quos nostrum! Placeat, quam consequatur itaque incidunt rem iste? Beatae, fuga qui inventore accusamus rem esse corporis ut soluta eius asperiores similique suscipit itaque iure illum eos quam nam perferendis in dolores quis quisquam. Cupiditate blanditiis nihil, cum magni tempore sed, atque a accusamus rem id excepturi mollitia iusto veritatis molestiae nemo temporibus asperiores quo saepe sapiente placeat libero, illum officia impedit. Dicta alias aperiam veritatis quibusdam sed natus, ullam est id debitis vitae, vel iste. Sapiente nam quis eaque eveniet quae voluptatem doloribus dolor ullam! Nemo cum neque dolorum maxime deserunt hic aut veniam adipisci numquam alias? Placeat fuga a eaque?</div>
+          <a class="read-more" href="/details/:id">Read More...</div>
+        </div>
+ 
+      </div>  
+      <%});%>
     </div>
 </body>
 </html>
